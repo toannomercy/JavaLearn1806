@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Product</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Create New Product</h2>
+    <form th:action="@{/Product/create}" th:object="${product}" method="post">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Enter product name" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" th:field="*{description}" placeholder="Enter product description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="ram">RAM</label>
+            <input type="text" class="form-control" id="ram" th:field="*{ram}" placeholder="Enter RAM details" required>
+        </div>
+        <div class="form-group">
+            <label for="rom">ROM</label>
+            <input type="text" class="form-control" id="rom" th:field="*{rom}" placeholder="Enter ROM details" required>
+        </div>
+        <div class="form-group">
+            <label for="cpu">CPU</label>
+            <input type="text" class="form-control" id="cpu" th:field="*{cpu}" placeholder="Enter CPU details" required>
+        </div>
+        <div class="form-group">
+            <label for="brand">Brand</label>
+            <input type="text" class="form-control" id="brand" th:field="*{brand}" placeholder="Enter brand name" required>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" th:field="*{price}" placeholder="Enter price" required>
+        </div>
+        <div class="form-group">
+            <label for="enabled">Enabled</label>
+            <select class="form-control" id="enabled" th:field="*{enabled}">
+                <option value="true">Enabled</option>
+                <option value="false">Disabled</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select class="form-control" id="category" th:field="*{category.id}">
+                <option th:each="category : ${categories}" th:value="${category.cate_id}" th:text="${category.cate_name}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
